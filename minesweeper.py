@@ -144,7 +144,8 @@ def play(dim_size=10,num_bombs=10):
         print(board)
         user_input = re.split(',(\\s)*', input("Where would you like to dig? Enter as row,col: ")) 
         row, col = int(user_input[0]), int(user_input[-1])
-        if row < 0 or row >= board.dim_size or col < 0 or col >= dim_size:
+        
+        if row < 0 or row >= board.dim_size or col < 0 or col >= dim_size: #Used to make sure you stay in bounds
             print("Invalid location. Try again.")
             continue
 
@@ -153,17 +154,17 @@ def play(dim_size=10,num_bombs=10):
         if not safe:
             break #This is when the user hits the bomb
 
-    if safe:
+    if safe: #If a bomb is never struct, this will be outputted
         print("GOOD JOB! YOU WIN!")
     else:
-        print("YOU LOSE, LOSER! GET BLOW UP!")
+        print("YOU LOSE, LOSER! GET BLOWN UP!")
         # reveals the full board
         board.dug = [(r,c) for r in range(board.dim_size) for c in range(board.dim_size)]
         print(board)
 
 if __name__ == '__main__': 
     play()
-        
+    #runs the game   
         
         
         
